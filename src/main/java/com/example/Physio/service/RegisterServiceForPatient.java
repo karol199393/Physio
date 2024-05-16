@@ -1,4 +1,4 @@
-package com.example.Physio.controller;
+package com.example.Physio.service;
 
 import com.example.Physio.entity.Patient;
 import com.example.Physio.repository.PatientRepository;

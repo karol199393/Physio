@@ -13,6 +13,7 @@ public class Stuff {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
+    private String username;
     private String name;
     private String surname;
     private String email;
