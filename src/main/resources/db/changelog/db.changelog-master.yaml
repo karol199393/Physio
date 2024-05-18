@@ -1,0 +1,157 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: author_name
+      changes:
+        - createTable:
+            tableName: patient
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 2
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: patient_seq
+            startValue: 1
+  - changeSet:
+      id: 3
+      author: author_name
+      changes:
+        - createTable:
+            tableName: stuff
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: surname
+                  type: VARCHAR(255)
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 4
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: stuff_seq
+            startValue: 1
+  - changeSet:
+      id: 5
+      author: author_name
+      changes:
+        - createTable:
+            tableName: registration
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: patient_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_registration_patient
+                    references: patient(id)
+              - column:
+                  name: stuff_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_registration_stuff
+                    references: stuff(id)
+              - column:
+                  name: appointment_date
+                  type: DATE
+  - changeSet:
+      id: 6
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: registration_seq
+            startValue: 1
+  - changeSet:
+      id: 5
+      author: author_name
+      changes:
+        - createTable:
+            tableName: courseoftreatment
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: patient_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_registration_patient
+                    references: patient(id)
+              - column:
+                  name: stuff_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_registration_stuff
+                    references: stuff(id)
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: duration
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: 6
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: registration_seq
+            startValue: 1
+
+
+
+
+
