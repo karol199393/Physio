@@ -2,7 +2,9 @@ package com.example.Physio.service;
 
 import com.example.Physio.entity.Stuff;
 import com.example.Physio.repository.StuffRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class LoginServiceForStuff {
     public StuffRepository stuffRepository;
 

@@ -150,6 +150,81 @@ databaseChangeLog:
         - createSequence:
             sequenceName: registration_seq
             startValue: 1
+  - changeSet:
+      id: 7
+      author: author_name
+      changes:
+        - createTable:
+            tableName: recommendations
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: patient_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_recommendations_patient
+                    references: patient(id)
+              - column:
+                  name: stuff_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_recommendations_stuff
+                    references: stuff(id)
+              - column:
+                  name: recommendation
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 8
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: recommendations_seq
+            startValue: 1
+  - changeSet:
+      id: 9
+      author: author_name
+      changes:
+        - createTable:
+            tableName: calendar
+            columns:
+              - column:
+                  name: id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+                  autoIncrement: true
+              - column:
+                  name: stuff_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_calendar_stuff
+                    references: stuff(id)
+              - column:
+                  name: patient_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_calendar_patient
+                    references: patient(id)
+              - column:
+                  name: date
+                  type: DATE
+  - changeSet:
+      id: 10
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: calendar_seq
+            startValue: 1
+
 
 
 

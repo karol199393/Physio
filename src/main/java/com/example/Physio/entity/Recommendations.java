@@ -4,23 +4,18 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
-
 @Entity
 @Getter
 @Setter
-public class Registration {
+public class Recommendations {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "patient_id",nullable = false)
     private Patient patient;
     @ManyToOne(fetch = FetchType.LAZY)
-
     @JoinColumn(name = "stuff_id",nullable = false)
     private Stuff stuff;
-    private Date appointmentDate;
-
-
+    private String recommendation;
 }
