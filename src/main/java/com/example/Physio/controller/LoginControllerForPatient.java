@@ -14,7 +14,6 @@ import static org.springframework.http.ResponseEntity.ok;
 @RestController
 @RequestMapping("/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
-
 public class LoginControllerForPatient {
 
     LoginServiceForPatient loginServiceForPatient;
@@ -23,6 +22,7 @@ public class LoginControllerForPatient {
         this.loginServiceForPatient = loginServiceForPatient;
     }
 
+    @RequestMapping("/loginForPatient")
     public ResponseEntity<Patient> loginForPatient(@RequestBody Patient patient) {
         Patient patient1 = loginServiceForPatient.login(patient.getUsername(), patient.getPassword());
         if(patient1!=null){
