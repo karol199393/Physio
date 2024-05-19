@@ -24,7 +24,7 @@ public class RecommendationsController {
         return recommendationsService.save(recommendations);
     }
 
-    @GetMapping("/getAllRecommendations")
+    @GetMapping("/getAll")
     public List<Recommendations> getAllRecommendations() {
         return recommendationsService.findAll();
     }
@@ -58,4 +58,6 @@ public class RecommendationsController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 }

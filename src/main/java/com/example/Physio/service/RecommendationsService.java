@@ -3,6 +3,7 @@ package com.example.Physio.service;
 
 import com.example.Physio.entity.Recommendations;
 import com.example.Physio.repository.RecommendationsRepository;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,4 +34,29 @@ public class RecommendationsService {
     public void deleteById(Long id) {
         recommendationsRepository.deleteById(id);
     }
+
+    public ResponseEntity<Recommendations> updateRecommendations(Long id, Recommendations recommendations) {
+        Optional<Recommendations> recommendationsData = recommendationsRepository.findById(id);
+
+        if (recommendationsData.isPresent()) {
+            Recommendations _recommendations = recommendationsData.get();
+            _recommendations.setRecommendation(recommendations.getRecommendation());
+            return ResponseEntity.ok(recommendationsRepository.save(_recommendations));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    public ResponseEntity<Recommendations> assignRecommendationsToPatient(Long id, Recommendations recommendations) {
+        Optional<Recommendations> recommendationsData = recommendationsRepository.findById(id);
+
+        if (recommendationsData.isPresent()) {
+            Recommendations _recommendations = recommendationsData.get();
+            _recommendations.setRecommendation(recommendations.getRecommendation());
+            return ResponseEntity.ok(recommendationsRepository.save(_recommendations));
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

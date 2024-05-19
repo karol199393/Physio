@@ -7,6 +7,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "course_of_treatment")
 public class CourseOfTreatment {
 
     @Id
