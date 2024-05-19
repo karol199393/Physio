@@ -15,7 +15,6 @@ public class StuffController {
     public StuffController(StuffService stuffService) {
         this.stuffService = stuffService;
     }
-
     @GetMapping("/getAll")
     public void getAllStuff() {
         stuffService.getAllStuffs();

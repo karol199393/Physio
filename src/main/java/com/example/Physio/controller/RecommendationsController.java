@@ -24,7 +24,7 @@ public class RecommendationsController {
         return recommendationsService.save(recommendations);
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/getAllRec")
     public List<Recommendations> getAllRecommendations() {
         return recommendationsService.findAll();
     }
