@@ -1,5 +1,6 @@
 package com.example.Physio.service;
 
+import com.example.Physio.dto.RegisterRequest;
 import com.example.Physio.entity.Stuff;
 import com.example.Physio.repository.StuffRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,15 +21,19 @@ public class RegisterServiceForStuff {
         stuffRepository.deleteById(id);
     }
 
-    public Stuff registerStuff(Stuff stuff) {
-        if(stuff.getName() == null || stuff.getName() == null|| stuff.getPassword() == null ||stuff.getEmail() == null) {
+    public Stuff registerStuff(RegisterRequest stuff) {
+        if(stuff.getEmail() == null|| stuff.getUsername() == null|| stuff.getPassword() == null ) {
             throw new RuntimeException("Username or password cannot be null");
         }
-        Optional<Stuff> existingStuff = Optional.ofNullable(stuffRepository.findByUsername(stuff.getSurname()));
+        Optional<Stuff> existingStuff = Optional.ofNullable(stuffRepository.findByUsername(stuff.getUsername()));
         if (existingStuff.isPresent()) {
             throw new RuntimeException("Stuff already exists");
         }
         stuff.setPassword(encoder.encode(stuff.getPassword()));
-        return stuffRepository.save(stuff);
+        Stuff newStuff = new Stuff();
+        newStuff.setUsername(stuff.getUsername());
+        newStuff.setPassword(stuff.getPassword());
+        newStuff.setEmail(stuff.getEmail());
+        return stuffRepository.save(newStuff);
     }
 }

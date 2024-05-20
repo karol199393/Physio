@@ -1,5 +1,6 @@
 package com.example.Physio.controller;
 
+import com.example.Physio.dto.RegisterRequest;
 import com.example.Physio.entity.Patient;
 import com.example.Physio.service.RegisterServiceForPatient;
 import org.springframework.http.HttpStatus;
@@ -17,9 +18,9 @@ public class RegisterControllerForPatient {
     }
 
     @PostMapping("/registerPatient")
-    public ResponseEntity<Patient> registerPatient(@RequestBody Patient patient) {
-        Patient registeredPatient = registerServiceForPatient.registerPatient(patient);
-        return new ResponseEntity<>(registeredPatient, HttpStatus.CREATED);
+    public ResponseEntity<Patient> registerPatient(@RequestBody RegisterRequest registerRequest) {
+        Patient registeredUser = registerServiceForPatient.registerPatient(registerRequest);
+        return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
 }
