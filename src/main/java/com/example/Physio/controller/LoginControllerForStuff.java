@@ -18,6 +18,7 @@ public class LoginControllerForStuff {
         this.loginServiceForStuff = loginServiceForStuff;
     }
 
+    @RequestMapping("/loginForStuff")
   public ResponseEntity<Stuff> loginForStuff(@RequestBody Stuff stuff) {
         Stuff stuff1 = loginServiceForStuff.login(stuff.getUsername(), stuff.getPassword());
         if(stuff1!=null){
