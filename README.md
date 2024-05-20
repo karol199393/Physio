@@ -1,7 +1,7 @@
 Funkcjonalność:
 Dla Fizjoterapeuty/Lekarza:
 -Mozliwosc akceptacji wizyty
--Wprowadzanie danych do monitoringu przebiegu leczenia danej dolegliwosb
+-Wprowadzanie danych do monitoringu przebiegu leczenia danej dolegliwości
 -Zalecenia dla pacjenta
 -Panel z kalendarzem wizyt
 
