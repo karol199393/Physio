@@ -142,6 +142,24 @@ databaseChangeLog:
               - column:
                   name: duration
                   type: VARCHAR(255)
+              - column:
+                  name: startDate
+                  type: DATE
+              - column:
+                  name: endDate
+                  type: DATE
+              - column:
+                  name: progressRating
+                  type: INT
+              - column:
+                  name: muscleStrength
+                  type: DOUBLE
+              - column:
+                  name: endurance
+                  type: DOUBLE
+              - column:
+                  name: visitNotes
+                  type: VARCHAR(255)
 
   - changeSet:
       id: 6

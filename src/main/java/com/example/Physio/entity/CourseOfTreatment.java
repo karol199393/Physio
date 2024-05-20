@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Entity
 @Getter
 @Setter
@@ -21,6 +23,11 @@ public class CourseOfTreatment {
     @JoinColumn(name = "patient_id",nullable = false)
     private Patient patient;
     private String description;
-    private String duration;
+    private LocalDate startDate;
+    private LocalDate endDate;
+    private int progressRating;
+    private double muscleStrength;
+    private double endurance;
+    private String visitNotes;
 
 }

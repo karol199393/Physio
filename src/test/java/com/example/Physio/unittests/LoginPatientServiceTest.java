@@ -25,12 +25,7 @@ public class LoginPatientServiceTest {
         Mockito.when(userRepository.findByUsername("testPatient")).thenReturn(null);
         assertThrows(RuntimeException.class, () -> loginService.login("testPatient", "testPassword"));
     }
-    /*@Test
-    public void testLoginNullUser() {
-        Mockito.when(userRepository.findByUsername(null)).thenReturn(null);
 
-        assertThrows(RuntimeException.class, () -> loginService.login(null,"null"));
-    } */
     @Test
     public void shouldThrowExceptionWhenProviedPasswordIsNull() {
         Patient mockUser = new Patient();
@@ -39,7 +34,7 @@ public class LoginPatientServiceTest {
 
         Mockito.when(userRepository.findByUsername("testPatient")).thenReturn(mockUser);
 
-        assertThrows(RuntimeException.class, () -> loginService.login("testUser",null));
+        assertThrows(RuntimeException.class, () -> loginService.login("testPatient", null));
     }
     @Test
     public void shouldThrowExceptionWhenPasswordDoesNotMatch() {
@@ -64,10 +59,7 @@ public class LoginPatientServiceTest {
 
     @Test
     public void shouldThrowExceptionWhenUsernameIsNull() {
-        Patient mockUser = new Patient();
-        mockUser.setUsername(null);
-        mockUser.setPassword("testPassword");
-        Mockito.when(userRepository.findByUsername(null)).thenReturn(mockUser);
-        assertThrows(RuntimeException.class, () -> loginService.login(null,"testPassword"));
+        assertThrows(RuntimeException.class, () -> loginService.login(null, "testPassword"));
     }
+
 }
