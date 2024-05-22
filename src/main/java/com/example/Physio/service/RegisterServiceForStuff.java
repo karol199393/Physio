@@ -22,7 +22,7 @@ public class RegisterServiceForStuff {
     }
 
     public Stuff registerStuff(RegisterRequest stuff) {
-        if(stuff.getEmail() == null|| stuff.getUsername() == null|| stuff.getPassword() == null ) {
+        if(stuff.getEmail() == null && stuff.getUsername() == null && stuff.getPassword() == null ) {
             throw new RuntimeException("Username or password cannot be null");
         }
         Optional<Stuff> existingStuff = Optional.ofNullable(stuffRepository.findByUsername(stuff.getUsername()));

@@ -36,11 +36,11 @@ public class SecurityConfig {
                                 .requestMatchers("/api/v1/**").permitAll()
                                 .anyRequest().authenticated()
                 )
-                .formLogin(formLogin ->
-                        formLogin
-                                .loginPage("/login")
-                                .permitAll()
-                )
+//                .formLogin(formLogin ->
+//                        formLogin
+//                                .loginPage("/login")
+//                                .permitAll()
+//                )
                 .logout(logout ->
                         logout.permitAll()
                 )

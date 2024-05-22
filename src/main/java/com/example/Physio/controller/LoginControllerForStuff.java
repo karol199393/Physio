@@ -19,12 +19,12 @@ public class LoginControllerForStuff {
     }
 
     @RequestMapping("/loginForStuff")
-  public ResponseEntity<Stuff> loginForStuff(@RequestBody Stuff stuff) {
+    public ResponseEntity<Stuff> loginForStuff(@RequestBody Stuff stuff) {
         Stuff stuff1 = loginServiceForStuff.login(stuff.getUsername(), stuff.getPassword());
         if(stuff1!=null){
             return ResponseEntity.ok(stuff1);
         }
-        return ResponseEntity.status(401).build();
+        return ResponseEntity.status(200).build();
     }
 
 }

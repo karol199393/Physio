@@ -22,7 +22,7 @@ public class RegisterServiceForPatient {
         patientRepository.deleteById(id);
     }
     public Patient registerPatient(RegisterRequest patient) {
-        if(patient.getEmail() == null || patient.getUsername() == null || patient.getPassword() == null ) {
+        if(patient.getEmail() == null && patient.getUsername() == null && patient.getPassword() == null ) {
             throw new RuntimeException("Username or password cannot be null");
         }
         Optional<Patient> existingPatient = Optional.ofNullable(patientRepository.findByUsername(patient.getUsername()));

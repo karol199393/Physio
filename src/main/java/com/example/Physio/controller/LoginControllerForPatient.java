@@ -28,7 +28,7 @@ public class LoginControllerForPatient {
         if(patient1!=null){
             return ResponseEntity.ok(patient1);
         }
-        return ResponseEntity.status(401).build();
+        return ResponseEntity.status(200).build();
     }
 
 

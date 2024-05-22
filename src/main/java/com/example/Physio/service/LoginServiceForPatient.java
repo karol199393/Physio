@@ -2,20 +2,26 @@ package com.example.Physio.service;
 
 import com.example.Physio.entity.Patient;
 import com.example.Physio.repository.PatientRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LoginServiceForPatient {
     public PatientRepository patientRepository;
+    PasswordEncoder passwordEncoder;
 
-    public LoginServiceForPatient(PatientRepository patientRepository) {
+    public LoginServiceForPatient(PatientRepository patientRepository,PasswordEncoder passwordEncoder) {
         this.patientRepository = patientRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Patient login(String username, String password) {
+
         if (password != null) {
             Patient patient = patientRepository.findByUsername(username);
-            if (patient != null && patient.getPassword().equals(password)) {
+            boolean pass=passwordEncoder.matches(password, patient.getPassword());
+            if (patient != null && pass) {
                 return patient;
             }
             if (patient == null) {
@@ -26,9 +32,7 @@ public class LoginServiceForPatient {
             }
             if (patient.getPassword() == null)
                 throw new RuntimeException("Password cannot be null");
-            if (!patient.getPassword().equals(password)) {
-                throw new RuntimeException("Incorrect password");
-            }
+
             if (username == null)
                 throw new RuntimeException("Username cannot be null");
         }

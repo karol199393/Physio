@@ -4,6 +4,7 @@ import com.example.Physio.entity.CourseOfTreatment;
 import com.example.Physio.service.CourseOfTreatmentService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,7 +23,7 @@ public class CourseOfTreatmentController {
     }
 
     @GetMapping("/patient/{id}")
-    public Optional<CourseOfTreatment> getCourseOfTreatmentByPatientId(@PathVariable Long id) {
+    public List<CourseOfTreatment> getCourseOfTreatmentByPatientId(@PathVariable Long id) {
         return courseOfTreatmentService.getCourseOfTreatmentById(id);
     }
 }
