@@ -40,8 +40,6 @@ public class RecommendationsController {
         Optional<Recommendations> optionalRecommendations = recommendationsService.findById(id);
         if (optionalRecommendations.isPresent()) {
             Recommendations recommendations = optionalRecommendations.get();
-            recommendations.setPatient(recommendationsDetails.getPatient());
-            recommendations.setStuff(recommendationsDetails.getStuff());
             recommendations.setRecommendation(recommendationsDetails.getRecommendation());
             return ResponseEntity.ok(recommendationsService.save(recommendations));
         } else {

@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface CourseOfTreatmentRepository extends JpaRepository<CourseOfTreatment, Long> {
     CourseOfTreatment findByName(String name);
-    List<CourseOfTreatment> findByPatientId(Long id);
+    List<CourseOfTreatment> findByUserId(Long userId);
 }

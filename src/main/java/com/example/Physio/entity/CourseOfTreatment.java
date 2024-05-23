@@ -16,12 +16,6 @@ public class CourseOfTreatment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stuff_id",nullable = false)
-    private Stuff stuff;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id",nullable = false)
-    private Patient patient;
     private String description;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -29,5 +23,8 @@ public class CourseOfTreatment {
     private double muscleStrength;
     private double endurance;
     private String visitNotes;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

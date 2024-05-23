@@ -4,7 +4,7 @@ databaseChangeLog:
       author: author_name
       changes:
         - createTable:
-            tableName: patient
+            tableName: user
             columns:
               - column:
                   name: id
@@ -26,51 +26,19 @@ databaseChangeLog:
                   type: VARCHAR(255)
               - column:
                   name: password
+                  type: VARCHAR(255)
+              - column:
+                  name: role
                   type: VARCHAR(255)
   - changeSet:
       id: 2
       author: author_name
       changes:
         - createSequence:
-            sequenceName: patient_seq
+            sequenceName: user_seq
             startValue: 1
   - changeSet:
       id: 3
-      author: author_name
-      changes:
-        - createTable:
-            tableName: stuff
-            columns:
-              - column:
-                  name: id
-                  type: SERIAL
-                  constraints:
-                    primaryKey: true
-                  autoIncrement: true
-              - column:
-                  name: username
-                  type: VARCHAR(255)
-              - column:
-                  name: name
-                  type: VARCHAR(255)
-              - column:
-                  name: surname
-                  type: VARCHAR(255)
-              - column:
-                  name: email
-                  type: VARCHAR(255)
-              - column:
-                  name: password
-                  type: VARCHAR(255)
-  - changeSet:
-      id: 4
-      author: author_name
-      changes:
-        - createSequence:
-            sequenceName: stuff_seq
-            startValue: 1
-  - changeSet:
-      id: 5
       author: author_name
       changes:
         - createTable:
@@ -83,24 +51,17 @@ databaseChangeLog:
                     primaryKey: true
                   autoIncrement: true
               - column:
-                  name: patient_id
+                  name: user_id
                   type: BIGINT
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_registration_patient
-                    references: patient(id)
-              - column:
-                  name: stuff_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_registration_stuff
-                    references: stuff(id)
+                    foreignKeyName: fk_registration_user
+                    references: user(id)
               - column:
                   name: appointment_date
                   type: DATE
   - changeSet:
-      id: 6
+      id: 4
       author: author_name
       changes:
         - createSequence:
@@ -123,19 +84,12 @@ databaseChangeLog:
                   name: name
                   type: VARCHAR(255)
               - column:
-                  name: patient_id
+                  name: user_id
                   type: BIGINT
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_registration_patient
-                    references: patient(id)
-              - column:
-                  name: stuff_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_registration_stuff
-                    references: stuff(id)
+                    foreignKeyName: fk_courseoftreatment_user
+                    references: user(id)
               - column:
                   name: description
                   type: VARCHAR(255)
@@ -160,13 +114,12 @@ databaseChangeLog:
               - column:
                   name: visitNotes
                   type: VARCHAR(255)
-
   - changeSet:
       id: 6
       author: author_name
       changes:
         - createSequence:
-            sequenceName: registration_seq
+            sequenceName: courseoftreatment_seq
             startValue: 1
   - changeSet:
       id: 7
@@ -182,19 +135,12 @@ databaseChangeLog:
                     primaryKey: true
                   autoIncrement: true
               - column:
-                  name: patient_id
+                  name: user_id
                   type: BIGINT
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_recommendations_patient
-                    references: patient(id)
-              - column:
-                  name: stuff_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_recommendations_stuff
-                    references: stuff(id)
+                    foreignKeyName: fk_recommendations_user
+                    references: user(id)
               - column:
                   name: recommendation
                   type: VARCHAR(255)
@@ -219,19 +165,12 @@ databaseChangeLog:
                     primaryKey: true
                   autoIncrement: true
               - column:
-                  name: stuff_id
+                  name: user_id
                   type: BIGINT
                   constraints:
                     nullable: false
-                    foreignKeyName: fk_calendar_stuff
-                    references: stuff(id)
-              - column:
-                  name: patient_id
-                  type: BIGINT
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_calendar_patient
-                    references: patient(id)
+                    foreignKeyName: fk_calendar_user
+                    references: user(id)
               - column:
                   name: date
                   type: DATE
@@ -242,9 +181,3 @@ databaseChangeLog:
         - createSequence:
             sequenceName: calendar_seq
             startValue: 1
-
-
-
-
-
-

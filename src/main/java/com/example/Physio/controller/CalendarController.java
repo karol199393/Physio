@@ -42,8 +42,6 @@ public class CalendarController {
         Optional<Calendar> optionalCalendar = calendarService.findById(id);
         if (optionalCalendar.isPresent()) {
             Calendar calendar = optionalCalendar.get();
-            calendar.setStuff(calendarDetails.getStuff());
-            calendar.setPatient(calendarDetails.getPatient());
             calendar.setDate(calendarDetails.getDate());
             return ResponseEntity.ok(calendarService.save(calendar));
         } else {

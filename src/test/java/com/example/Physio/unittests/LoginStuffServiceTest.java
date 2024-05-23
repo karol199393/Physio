@@ -1,9 +1,6 @@
 package com.example.Physio.unittests;
 
 
-import com.example.Physio.entity.Stuff;
-import com.example.Physio.repository.StuffRepository;
-import com.example.Physio.service.LoginServiceForStuff;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
