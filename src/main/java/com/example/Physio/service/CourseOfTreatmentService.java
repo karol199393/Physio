@@ -16,7 +16,7 @@ public class CourseOfTreatmentService {
         this.courseOfTreatmentRepository = courseOfTreatmentRepository;
     }
 
-    public List<CourseOfTreatment> getCourseOfTreatmentById(@PathVariable Long id) {
+    public List<CourseOfTreatment> getCourseOfTreatmentById(Long id) {
         return courseOfTreatmentRepository.findByUserId(id);
     }
 

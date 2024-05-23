@@ -1,5 +1,6 @@
 package com.example.Physio.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,7 +18,9 @@ public class CourseOfTreatment {
     private Long id;
     private String name;
     private String description;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate startDate;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate endDate;
     private int progressRating;
     private double muscleStrength;
