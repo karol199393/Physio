@@ -26,4 +26,9 @@ public class CourseOfTreatmentController {
     public List<CourseOfTreatment> getCourseOfTreatmentByPatientId(@PathVariable Long id) {
         return courseOfTreatmentService.getCourseOfTreatmentById(id);
     }
+
+    @GetMapping("/getAllPatients")
+    public List<CourseOfTreatment> getAllPatients() {
+        return courseOfTreatmentService.getAllPatients();
+    }
 }

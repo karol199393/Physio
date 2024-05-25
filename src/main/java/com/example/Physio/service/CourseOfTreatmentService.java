@@ -24,6 +24,9 @@ public class CourseOfTreatmentService {
         return courseOfTreatmentRepository.save(courseOfTreatment);
     }
 
+    public List<CourseOfTreatment> getAllPatients() {
+        return courseOfTreatmentRepository.findAll();
+    }
 
 
 

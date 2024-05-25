@@ -23,11 +23,13 @@ public class CourseOfTreatment {
     @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate endDate;
     private int progressRating;
-    private double muscleStrength;
-    private double endurance;
+    private int regenerativeRating;
     private String visitNotes;
+    @Column(name = "user_id")
+    private Long userId;
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
 
-}
+    }
+
