@@ -35,7 +35,7 @@ public class RecommendationsController {
         return recommendations.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public ResponseEntity<Recommendations> updateRecommendation(@PathVariable Long id, @RequestBody Recommendations recommendationsDetails) {
         Optional<Recommendations> optionalRecommendations = recommendationsService.findById(id);
         if (optionalRecommendations.isPresent()) {
