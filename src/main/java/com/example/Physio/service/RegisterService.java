@@ -1,6 +1,7 @@
 package com.example.Physio.service;
 
-import com.example.Physio.dto.RegisterRequest;
+
+import com.example.Physio.entity.RegisterRequest;
 import com.example.Physio.entity.Role;
 import com.example.Physio.entity.User;
 import com.example.Physio.repository.RoleRepository;
@@ -35,12 +36,12 @@ public class RegisterService {
             throw new RuntimeException("User already exists");
         }
 
-        Long roleId = userRequest.getRole();
+        Long roleId = userRequest.getRoleId();
         if (roleId == null) {
             throw new IllegalArgumentException("Role ID cannot be null");
         }
 
-        Role role = roleRepository.findByRolename(roleId.toString())
+        Role role = roleRepository.findById(roleId)
                 .orElseThrow(() -> new RuntimeException("Role not found"));
         userRequest.setPassword(encoder.encode(userRequest.getPassword()));
         User newUser = new User();
@@ -50,8 +51,6 @@ public class RegisterService {
         newUser.setRole(role);
         return userRepository.save(newUser);
     }
-
-    public Optional<Role> findRoleByRolename(String rolename) {
-        return roleRepository.findByRolename(rolename);
-    }
 }
+
+

@@ -1,16 +1,25 @@
 package com.example.Physio.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
+@Table(name = "recommendations")
 @Getter
 @Setter
-@Table(name = "recommendations")
 public class Recommendations {
+
     @Id
-    @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private String recommendation;
+
+    // Getters and setters
 }

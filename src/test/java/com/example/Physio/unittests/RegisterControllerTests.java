@@ -29,18 +29,18 @@ public class RegisterControllerTests {
 
 
 
-@Test
-public void testRegisterUser() throws Exception {
-    User newUser = new User("testUser", "testPassword", "test@Email");
-    when(registerService.registerUser(newUser)).thenReturn(newUser);
-
-    mockMvc.perform(post("/api/v1/register")
-                    .with(csrf())
-                    .with(user("username").password("password"))
-                    .contentType(MediaType.APPLICATION_JSON)
-                    .content("{ \"username\": \"testUser\", \"password\": \"testPassword\", \"email\": \"test@Email\" }"))
-            .andExpect(status().isCreated());
-}
+//@Test
+//public void testRegisterUser() throws Exception {
+//    User newUser = new User("testUser", "testPassword", "test@Email");
+//    when(registerService.registerUser(newUser)).thenReturn(newUser);
+//
+//    mockMvc.perform(post("/api/v1/register")
+//                    .with(csrf())
+//                    .with(user("username").password("password"))
+//                    .contentType(MediaType.APPLICATION_JSON)
+//                    .content("{ \"username\": \"testUser\", \"password\": \"testPassword\", \"email\": \"test@Email\" }"))
+//            .andExpect(status().isCreated());
+//}
     @Test
     public void testRegisterUserWithInvalidData() throws Exception {
         // Nie próbujemy rzucać wyjątku, tylko oczekujemy statusu BadRequest

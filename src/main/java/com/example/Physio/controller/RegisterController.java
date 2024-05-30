@@ -1,6 +1,7 @@
 package com.example.Physio.controller;
 
-import com.example.Physio.dto.RegisterRequest;
+
+import com.example.Physio.entity.RegisterRequest;
 import com.example.Physio.entity.User;
 import com.example.Physio.service.RegisterService;
 import org.springframework.http.HttpStatus;
