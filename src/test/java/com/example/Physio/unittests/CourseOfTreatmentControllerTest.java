@@ -24,8 +24,6 @@ public class CourseOfTreatmentControllerTest {
          courseOfTreatment.setStartDate(LocalDate.parse("2021-01-01"));
          courseOfTreatment.setEndDate(LocalDate.parse("2021-01-31"));
          courseOfTreatment.setProgressRating(5);
-         courseOfTreatment.setMuscleStrength(5.0);
-         courseOfTreatment.setEndurance(5.0);
          courseOfTreatment.setVisitNotes("testVisitNotes");
 
          assertEquals("testCourseOfTreatment", courseOfTreatment.getName());
@@ -33,8 +31,6 @@ public class CourseOfTreatmentControllerTest {
          assertEquals(LocalDate.parse("2021-01-01"), courseOfTreatment.getStartDate());
          assertEquals(LocalDate.parse("2021-01-31"), courseOfTreatment.getEndDate());
          assertEquals(5, courseOfTreatment.getProgressRating());
-         assertEquals(5.0, courseOfTreatment.getMuscleStrength());
-         assertEquals(5.0, courseOfTreatment.getEndurance());
          assertEquals("testVisitNotes", courseOfTreatment.getVisitNotes());
      }
 

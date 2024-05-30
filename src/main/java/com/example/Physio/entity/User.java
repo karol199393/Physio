@@ -9,11 +9,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-@Table(name = "users")
+@Table(name = "user")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
     private String username;
     private String name;
@@ -23,5 +24,6 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
 
 }

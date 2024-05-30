@@ -40,7 +40,7 @@ public class RegisterService {
             throw new IllegalArgumentException("Role ID cannot be null");
         }
 
-        Role role = roleRepository.findById(roleId)
+        Role role = roleRepository.findByRolename(roleId.toString())
                 .orElseThrow(() -> new RuntimeException("Role not found"));
         userRequest.setPassword(encoder.encode(userRequest.getPassword()));
         User newUser = new User();
@@ -49,5 +49,9 @@ public class RegisterService {
         newUser.setEmail(userRequest.getEmail());
         newUser.setRole(role);
         return userRepository.save(newUser);
+    }
+
+    public Optional<Role> findRoleByRolename(String rolename) {
+        return roleRepository.findByRolename(rolename);
     }
 }
