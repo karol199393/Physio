@@ -1,0 +1,21 @@
+package com.example.Physio.service;
+
+import com.example.Physio.repository.RoleRepository;
+import org.springframework.stereotype.Service;
+
+@Service
+public class RoleService {
+    RoleRepository roleRepository;
+
+    public RoleService(RoleRepository roleRepository) {
+        this.roleRepository = roleRepository;
+    }
+
+    public void getRole(Long id) {
+        roleRepository.findById(id);
+    }
+
+    public void getAllRoles() {
+        roleRepository.findAll();
+    }
+}
