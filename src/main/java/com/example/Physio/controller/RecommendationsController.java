@@ -1,11 +1,16 @@
 package com.example.Physio.controller;
 
 import com.example.Physio.entity.Recommendations;
+import com.example.Physio.entity.User;
 import com.example.Physio.service.RecommendationsService;
+import com.example.Physio.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -14,14 +19,28 @@ import java.util.Optional;
 public class RecommendationsController {
 
     private final RecommendationsService recommendationsService;
+    @Autowired
+    private UserService userService;
 
     public RecommendationsController(RecommendationsService recommendationsService) {
         this.recommendationsService = recommendationsService;
     }
 
     @PostMapping("/create")
-    public Recommendations createRecommendation(@RequestBody Recommendations recommendations) {
-        return recommendationsService.save(recommendations);
+    public Recommendations createRecommendation(@RequestBody Map<String, String> body) throws ChangeSetPersister.NotFoundException {
+        Long userId = Long.parseLong(body.get("userId"));
+        String recommendation = body.get("recommendation");
+
+        User user = userService.findUserById(userId);
+        if (user == null) {
+            throw new ChangeSetPersister.NotFoundException();
+        }
+
+        Recommendations newRecommendation = new Recommendations();
+        newRecommendation.setUser(user);
+        newRecommendation.setRecommendation(recommendation);
+
+        return recommendationsService.save(newRecommendation);
     }
 
     @GetMapping("/getAllRec")

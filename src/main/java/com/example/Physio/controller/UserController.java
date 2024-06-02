@@ -30,4 +30,8 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
+    @GetMapping("/getUserFromRecommendation/{id}")
+    public ResponseEntity<User> getUserFromRecommendation(Long id) {
+        return ResponseEntity.ok(userService.findUserById(id));
+    }
 }
