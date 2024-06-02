@@ -57,5 +57,17 @@ public class RecommendationsController {
         }
     }
 
+   @GetMapping("/getUserByRecommendation/{id}")
+   public ResponseEntity<Recommendations> getUserByRecommendation(@PathVariable Long id) {
+        Optional<Recommendations> recommendationsData = recommendationsService.findById(id);
+
+        if (recommendationsData.isPresent()) {
+            Recommendations _recommendations = recommendationsData.get();
+            return ResponseEntity.ok(_recommendations);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }

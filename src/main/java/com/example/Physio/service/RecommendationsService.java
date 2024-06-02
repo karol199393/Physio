@@ -5,6 +5,7 @@ import com.example.Physio.entity.Recommendations;
 import com.example.Physio.repository.RecommendationsRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +58,11 @@ public class RecommendationsService {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    public ResponseEntity<Recommendations> getUserByRecommendation(Long id) {
+        Optional<Recommendations> recommendations = recommendationsRepository.findById(id);
+        return recommendations.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
 }
