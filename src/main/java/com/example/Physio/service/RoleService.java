@@ -1,7 +1,10 @@
 package com.example.Physio.service;
 
+import com.example.Physio.entity.Role;
 import com.example.Physio.repository.RoleRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class RoleService {
