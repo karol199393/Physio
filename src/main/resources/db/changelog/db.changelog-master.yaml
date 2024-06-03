@@ -245,3 +245,34 @@ databaseChangeLog:
               - column:
                   name: role_id
                   type: BIGINT
+  - changeSet:
+      id: 15
+      author: author_name
+      changes:
+        - createTable:
+            tableName: sick_leave
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_recommendations_user
+                    references: users(id)
+              - column:
+                  name: sick_leave
+                  type: VARCHAR(255)
+  - changeSet:
+      id: 16
+      author: author_name
+      changes:
+        - createSequence:
+            sequenceName: sick_leave_seq
+            startValue: 1
+
