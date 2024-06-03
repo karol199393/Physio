@@ -2,6 +2,7 @@ package com.example.Physio.controller;
 
 import com.example.Physio.entity.Role;
 import com.example.Physio.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import java.util.List;
 @RequestMapping("/api/v1")
 @CrossOrigin(origins = "http://localhost:3000")
 public class RoleController {
+
     RoleService roleService;
 
     public RoleController(RoleService roleService) {
@@ -26,7 +28,7 @@ public class RoleController {
     }
 
     @GetMapping("/getAllRoles")
-    public void getAllRoles() {
-         roleService.getAllRoles();
+    public List<Role> getAllRoles() {
+        return roleService.getAllRoles();
     }
 }
