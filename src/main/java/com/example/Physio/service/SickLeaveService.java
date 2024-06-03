@@ -5,6 +5,8 @@ import com.example.Physio.entity.User;
 import com.example.Physio.repository.SickLeaveRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SickLeaveService {
     SickLeaveRepository sickLeaveRepository;
@@ -13,13 +15,12 @@ public class SickLeaveService {
         this.sickLeaveRepository = sickLeaveRepository;
     }
 
-    public User getSickLeaveById(Long id) {
-        sickLeaveRepository.findById(id);
-        return null;
+    public SickLeave getSickLeaveById(Long id) {
+        return sickLeaveRepository.findById(id).orElse(null);
     }
 
-    public void getAllSickLeaves() {
-        sickLeaveRepository.findAll();
+    public List<SickLeave> getAllSickLeaves() {
+        return sickLeaveRepository.findAll();
     }
 
     public void deleteSickLeaveById(Long id) {
@@ -27,8 +28,7 @@ public class SickLeaveService {
     }
 
     public SickLeave save(SickLeave sickLeave) {
-        sickLeaveRepository.save(sickLeave);
-        return sickLeave;
+        return sickLeaveRepository.save(sickLeave);
     }
 
 
