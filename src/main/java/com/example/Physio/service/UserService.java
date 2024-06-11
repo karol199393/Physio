@@ -26,4 +26,11 @@ public class UserService {
     public User findUserById(Long userId) {
         return userRepository.findById(userId).orElse(null);
     }
+    public User authenticate(String username, String password) {
+        return userRepository.findByUsernameAndPassword(username, password);
+    }
+
+    public String generateToken(User user) {
+        return "generated-jwt-token"; // Replace with actual token generation logic
+    }
 }
